@@ -1,0 +1,28 @@
+{% extends './base.html' %}
+{% block content %}
+{% load static %}
+
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Expense</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for value in data %}
+        <tr>
+            <th>{{value.date}}</th>
+            <th>{{value.comment}}</th>
+            {% if value.entryType == 'expense'%}
+            <th style="color: red">-₹{{value.amount}}</th>
+            {% else %}
+            <th style="color: green">+₹{{value.amount}}</th>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

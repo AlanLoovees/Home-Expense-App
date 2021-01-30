@@ -32,13 +32,16 @@
                 <span>Expense</span>
             </label>
         </div>
-        <div>
-            <input type="number" name="amount" id="amount" placeholder="Amount" required>
+        <div class="row">
+            <input class="col s3" type="number" name="amount" id="amount" placeholder="Amount" required>
+            <input class="col s7 offset-s2" type="text" name="comment" id="comment" placeholder="Comment" required>
         </div>
         <button class="add" type="submit">+ ADD</button>
     </form>
 </div>
-<a class="logout" href="log_out"><i class="material-icons">power_settings_new</i></a>
+<div class="logout">
+    <div>{{username}}</div><a class="logout" href="log_out"><i class="material-icons">power_settings_new</i></a>
+</div>
 
 <script>
     window.onload = function () {

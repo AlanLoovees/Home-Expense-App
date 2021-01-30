@@ -12,6 +12,7 @@ import datetime
 def home(request):
     expense = Expense.objects.all().filter(entryType='expense')
     income = Expense.objects.all().filter(entryType='income')
+    username = request.session['username']
     expenseTotal = 0
     incomeTotal = 0
 
@@ -24,11 +25,15 @@ def home(request):
             incomeTotal = incomeTotal + incomes.amount
     
     total = incomeTotal - expenseTotal
-    return render(request, 'home.html', {'expenseTotal': expenseTotal, 'incomeTotal':incomeTotal, 'total': total})
+    return render(request, 'home.html', {'expenseTotal': expenseTotal, 'incomeTotal':incomeTotal, 'total': total, 'username':username})
 
 @login_required(login_url='login')
 def logs(request):
-    return render(request, 'log.html')
+    data = Expense.objects.all()
+    cleanedData =[]
+    for expenses in data.iterator():
+        cleanedData.append(expenses)
+    return render(request, 'log.html', {'data':cleanedData})
 
 @login_required(login_url='login')
 def add(request):
@@ -36,9 +41,10 @@ def add(request):
         date = request.POST['date']
         entryType = request.POST['expenseType']
         amount = request.POST['amount']
+        comment = request.POST['comment']
         username = request.session['username']
 
-        newEntry = Expense(username=username, date=date, entryType=entryType, amount=amount)
+        newEntry = Expense(username=username, date=date, entryType=entryType, amount=amount, comment=comment)
         newEntry.save()
 
     return redirect('home')

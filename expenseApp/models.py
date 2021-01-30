@@ -14,3 +14,4 @@ class Expense(models.Model):
     date = models.DateField(default=datetime.date.today(), blank=True)
     entryType = models.CharField(default="expense", max_length=8)
     amount = models.FloatField(default=0.00)
+    comment = models.CharField(default="", max_length=40)
