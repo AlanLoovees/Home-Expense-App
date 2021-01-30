@@ -53,3 +53,69 @@ body {
     margin-top: 3rem;
     width: 70%;
 }
+
+.summary {
+    background-color: #292a2c;
+    font-size: 1.85rem;
+    height: 54vh;
+    padding: 3rem;
+}
+
+.summary .row {
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+}
+
+.net-income {
+    color: #18A657;
+    text-shadow: 2px 2px 8px #18A657;
+}
+
+.net-expense {
+    color: red;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+
+.net-total {
+    color: white;
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 5px #FFFFFF;
+}
+
+.know-more {
+    background-color: white;
+    border: 0;
+    border-radius: 20px;
+    color: black;
+    font-size: 1.2rem;
+    height: 3.5rem;
+    margin-top: 1rem;
+    margin-left: 27vw;
+    padding: 1rem;
+    width: 40%;
+}
+
+.add-new {
+    margin: 3rem;
+}
+
+.add {
+    background-color: #313ddd;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 20px 20px 0 rgba(16, 31, 224, 0.2), 0 5px 20px 0 rgba(16, 31, 224, 0.19);
+    color: white;
+    font-size: 1.2rem;
+    height: 3.5rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.logout {
+    background-color: #292a2c;
+    border: 0;
+    color: white;
+    position: fixed;
+    right: 1.3rem;
+    top: 1.3rem;
+}

@@ -4,12 +4,28 @@ from django.contrib.auth.decorators import login_required
 from .models import User, Expense
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
+import datetime
 
 # Create your views here.
 
 @login_required(login_url='login')
 def home(request):
     return render(request, 'home.html')
+
+def logs(request):
+    return render(request, 'log.html')
+
+def add(request):
+    if request.method == 'POST':
+        date = request.POST['date']
+        entryType = request.POST['expenseType']
+        amount = request.POST['amount']
+        username = request.session['username']
+
+        newEntry = Expense(username=username, date=date, entryType=entryType, amount=amount)
+        newEntry.save()
+
+    return redirect('home')
 
 def log_in(request):
     if request.method == 'POST':
@@ -18,7 +34,7 @@ def log_in(request):
         try:
             user = get_user_model().objects.get(email=email)
         except:
-            return render(request, 'login.html', {'message':'Please register!'})        
+            return render(request, 'login.html', {'message':'Please register!'})
         if(user.password == password):
         # check if user exists
             if user is not None:

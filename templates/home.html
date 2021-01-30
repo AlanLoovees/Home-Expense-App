@@ -1,0 +1,51 @@
+{% extends './base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="summary">
+    <div class="net-total">
+        <div>₹0</div><div>Total</div>
+    </div>
+    <div class="valign-wrapper row center">
+        <div class="net-income col s6">
+            <div>+₹250.00</div><div>Income</div>
+        </div>
+        <div class="net-expense col s6">
+            <div>-₹250.00</div><div>Expense</div>
+        </div>
+    </div>
+    <a class="know-more" href="logs">View Log</a>
+</div>
+<div class="add-new">
+    <form action="add" method="POST">
+        {% csrf_token %}
+        <div>
+            <input type="date" name="date" id="date">
+        </div>
+        <div style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+            <label>
+                <input class="with-gap" type="radio" name="expenseType" id="income" value="income">
+                <span>Income</span>
+            </label>
+            <label>
+                <input class="with-gap" type="radio" name="expenseType" id="expense" value="expense" checked>
+                <span>Expense</span>
+            </label>
+        </div>
+        <div>
+            <input type="number" name="amount" id="amount" placeholder="Amount" required>
+        </div>
+        <button class="add" type="submit">+ ADD</button>
+    </form>
+</div>
+<a class="logout" href="log_out"><i class="material-icons">power_settings_new</i></a>
+
+<script>
+    window.onload = function () {
+            var myDate = document.getElementById("date");
+            var today = new Date();
+            myDate.value = today.toISOString().substr(0, 10);
+        }
+</script>
+
+{% endblock %}
