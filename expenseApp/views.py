@@ -10,11 +10,27 @@ import datetime
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'home.html')
+    expense = Expense.objects.all().filter(entryType='expense')
+    income = Expense.objects.all().filter(entryType='income')
+    expenseTotal = 0
+    incomeTotal = 0
 
+    if(expense):
+        for expenses in expense.iterator():
+            expenseTotal = expenseTotal + expenses.amount
+
+    if(income):
+        for incomes in income.iterator():
+            incomeTotal = incomeTotal + incomes.amount
+    
+    total = incomeTotal - expenseTotal
+    return render(request, 'home.html', {'expenseTotal': expenseTotal, 'incomeTotal':incomeTotal, 'total': total})
+
+@login_required(login_url='login')
 def logs(request):
     return render(request, 'log.html')
 
+@login_required(login_url='login')
 def add(request):
     if request.method == 'POST':
         date = request.POST['date']
