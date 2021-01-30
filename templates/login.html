@@ -5,6 +5,7 @@
 <h1 class="form-title">Welcome Back!</h1>
 <div class="login-form center">
     <form action="login" method="POST">
+        {% csrf_token %}
         <div>
             <input type="email" name="email" id="email" placeholder="Email ID">
         </div>
@@ -12,6 +13,7 @@
             <input type="password" name="password" id="password" placeholder="Password">
         </div>
         <button type="submit">Login</button>
+        <div class="message">{{message}}</div>
     </form>
 </div>
 

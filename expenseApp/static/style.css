@@ -43,3 +43,13 @@ body {
     margin-top: 2rem;
     width: 100%;
 }
+
+.message {
+    color: red;
+    font-size: 1.2rem;
+    height: 2.75rem;
+    line-height: 2.75rem;
+    margin-left: 15%;
+    margin-top: 3rem;
+    width: 70%;
+}
