@@ -7,11 +7,15 @@
         <div>₹{{total}}</div><div>Total</div>
     </div>
     <div class="valign-wrapper row center">
-        <div class="net-income col s6">
-            <div>+₹{{incomeTotal}}</div><div>Income</div>
+        <div class="card col s5 net-income">
+            <div class="card-content">
+                <div>+₹{{incomeTotal}}</div>
+            </div>
         </div>
-        <div class="net-expense col s6">
-            <div>-₹{{expenseTotal}}</div><div>Expense</div>
+        <div class="card col s5 offset-s1 net-expense">
+            <div class="card-content">
+                <div>-₹{{expenseTotal}}</div>
+            </div>
         </div>
     </div>
     <a class="know-more" href="logs">View Log</a>
