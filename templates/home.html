@@ -2,49 +2,55 @@
 {% block content %}
 {% load static %}
 
-<div class="summary">
-    <div class="net-total">
-        <div>₹{{total}}</div><div>Total</div>
-    </div>
-    <div class="valign-wrapper row center">
-        <div class="card col s5 net-income">
-            <div class="card-content">
-                <div>+₹{{incomeTotal}}</div>
+<div class="row">
+    <div class="summary-parent col s12 m3">
+        <div class="summary">
+            <div class="net-total">
+                <div>₹{{total}}</div><div>Total</div>
             </div>
-        </div>
-        <div class="card col s5 offset-s1 net-expense">
-            <div class="card-content">
-                <div>-₹{{expenseTotal}}</div>
+            <div class="valign-wrapper row center">
+                <div class="card col s5 net-income">
+                    <div class="card-content">
+                        <div>+₹{{incomeTotal}}</div>
+                    </div>
+                </div>
+                <div class="card col s5 offset-s1 net-expense">
+                    <div class="card-content">
+                        <div>-₹{{expenseTotal}}</div>
+                    </div>
+                </div>
             </div>
+            <a class="know-more" href="logs">View Log</a>
+        </div>
+        <div class="logout">
+            <div>{{username}}</div><a class="logout" href="log_out"><i class="material-icons">power_settings_new</i></a>
         </div>
     </div>
-    <a class="know-more" href="logs">View Log</a>
-</div>
-<div class="add-new">
-    <form action="add" method="POST">
-        {% csrf_token %}
-        <div>
-            <input type="date" name="date" id="date">
+    <div class="col s12 m5 offset-m2">
+        <div class="add-new">
+            <form action="add" method="POST">
+                {% csrf_token %}
+                <div>
+                    <input type="date" name="date" id="date">
+                </div>
+                <div style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+                    <label>
+                        <input class="with-gap" type="radio" name="expenseType" id="income" value="income">
+                        <span>Income</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" type="radio" name="expenseType" id="expense" value="expense" checked>
+                        <span>Expense</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <input class="col s3" type="number" name="amount" id="amount" placeholder="Amount" required>
+                    <input class="col s7 offset-s2" type="text" name="comment" id="comment" placeholder="Comment" required>
+                </div>
+                <button class="add" type="submit">+ ADD</button>
+            </form>
         </div>
-        <div style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
-            <label>
-                <input class="with-gap" type="radio" name="expenseType" id="income" value="income">
-                <span>Income</span>
-            </label>
-            <label>
-                <input class="with-gap" type="radio" name="expenseType" id="expense" value="expense" checked>
-                <span>Expense</span>
-            </label>
-        </div>
-        <div class="row">
-            <input class="col s3" type="number" name="amount" id="amount" placeholder="Amount" required>
-            <input class="col s7 offset-s2" type="text" name="comment" id="comment" placeholder="Comment" required>
-        </div>
-        <button class="add" type="submit">+ ADD</button>
-    </form>
-</div>
-<div class="logout">
-    <div>{{username}}</div><a class="logout" href="log_out"><i class="material-icons">power_settings_new</i></a>
+    </div>
 </div>
 
 <script>

@@ -2,7 +2,9 @@
 {% block content %}
 {% load static %}
 
-<h1 class="form-title">Welcome Back!</h1>
+<div class="row login-title">
+    <div class="col s12 m4 offset-m4">
+        <h1 class="form-title">Welcome Back!</h1>
 <div class="login-form center">
     <form action="login" method="POST">
         {% csrf_token %}
@@ -15,6 +17,8 @@
         <button type="submit">Login</button>
         <div class="message">{{message}}</div>
     </form>
+</div>
+    </div>
 </div>
 
 

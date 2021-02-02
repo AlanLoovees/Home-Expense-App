@@ -1,5 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
 
+@media only screen and (min-width: 600px) {
+
+    .login-title {
+        padding-top: 10vh;
+    }
+
+    .summary {
+        padding-top: 25vh;
+    }
+
+    .summary-parent {
+        height: 100vh;
+    }
+
+    .logout {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    .logout div {
+        background-color: white;
+        color: #292a2c;
+    }
+
+    .add-new {
+        padding-top: 30vh;
+    }
+
+    .know-more {
+        background-color: white;
+        border: 0;
+        border-radius: 20px;
+        color: black;
+        font-size: 1.2rem;
+        height: 3.5rem;
+        margin-top: 1rem;
+        margin-left: 8vw !important;
+        padding: 1rem;
+        width: 10% !important;
+    }
+}
+
 body {
     font-family: 'Raleway', sans-serif;
 }
@@ -52,6 +94,10 @@ body {
     margin-left: 15%;
     margin-top: 3rem;
     width: 70%;
+}
+
+.summary-parent {
+    background-color: #292a2c;
 }
 
 .summary {
