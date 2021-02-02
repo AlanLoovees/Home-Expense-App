@@ -90,6 +90,11 @@ body {
     width: 100%;
 }
 
+.login-form button:disabled {
+    background-color: grey;
+    box-shadow: 0;
+}
+
 .message {
     color: red;
     font-size: 1.2rem;
