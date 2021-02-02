@@ -2,21 +2,27 @@
 {% block content %}
 {% load static %}
 
-<div class="row login-title">
+<div class="row register-title">
     <div class="col s12 m4 offset-m4">
-        <h1 class="form-title">Welcome Back!</h1>
+        <h1 class="form-title">bonjour!</h1>
         <div class="login-form center">
-            <form action="login" method="POST">
+            <form action="register" method="POST">
                 {% csrf_token %}
+                <div>
+                    <input type="text" name="username" id="username" placeholder="Username">
+                </div>
                 <div>
                     <input type="email" name="email" id="email" placeholder="Email ID">
                 </div>
                 <div>
                     <input type="password" name="password" id="password" placeholder="Password">
                 </div>
-                <button type="submit">Login</button>
+                <div>
+                    <input type="password" name="confirm" id="confirm" placeholder="Confirm password">
+                </div>
+                <button type="submit">Register</button>
                 <div class="message">{{message}}</div>
-                <div class="register-button"><a href="register">New here?</a></div>
+                <div class="login-button"><a href="login">Already a user?</a></div>
             </form>
         </div>
     </div>

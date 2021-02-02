@@ -49,6 +49,21 @@ def add(request):
 
     return redirect('home')
 
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        if User.objects.filter(email=email).exists():
+            return render(request, 'register.html', {'message':'Email already registered!'})
+        else:       
+            user = User(email=email, username=username, password=password)
+            user.save()
+            return redirect('login')
+    else:
+        return render(request, 'register.html')
+
+
 def log_in(request):
     if request.method == 'POST':
         email = request.POST['email']

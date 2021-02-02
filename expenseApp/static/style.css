@@ -6,6 +6,10 @@
         padding-top: 10vh;
     }
 
+    .register-title {
+        padding-top: 3vh;
+    }
+
     .summary {
         padding-top: 25vh;
     }
@@ -92,7 +96,7 @@ body {
     height: 2.75rem;
     line-height: 2.75rem;
     margin-left: 15%;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     width: 70%;
 }
 
