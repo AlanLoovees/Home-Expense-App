@@ -10,8 +10,9 @@ import datetime
 
 @login_required(login_url='login')
 def home(request):
-    expense = Expense.objects.all().filter(entryType='expense')
-    income = Expense.objects.all().filter(entryType='income')
+    username=request.session['username']
+    expense = Expense.objects.all().filter(entryType='expense').filter(username=username)
+    income = Expense.objects.all().filter(entryType='income').filter(username=username)
     username = request.session['username']
     expenseTotal = 0
     incomeTotal = 0
@@ -29,7 +30,8 @@ def home(request):
 
 @login_required(login_url='login')
 def logs(request):
-    data = Expense.objects.all()
+    username=request.session['username']
+    data = Expense.objects.all().filter(username=username)
     cleanedData =[]
     for expenses in data.iterator():
         cleanedData.append(expenses)
@@ -56,6 +58,8 @@ def register(request):
         password = request.POST['password']
         if User.objects.filter(email=email).exists():
             return render(request, 'register.html', {'message':'Email already registered!'})
+        elif User.objects.filter(username=username).exists():
+            return render(request, 'register.html', {'message':'Username already taken!'})
         else:       
             user = User(email=email, username=username, password=password)
             user.save()
