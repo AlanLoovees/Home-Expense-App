@@ -31,7 +31,7 @@ def home(request):
 @login_required(login_url='login')
 def logs(request):
     username=request.session['username']
-    data = Expense.objects.all().filter(username=username)
+    data = Expense.objects.all().filter(username=username).order_by('-date')
     cleanedData =[]
     for expenses in data.iterator():
         cleanedData.append(expenses)
